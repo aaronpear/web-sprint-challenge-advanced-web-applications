@@ -23,7 +23,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(credentials);
-        axios.post('http://localhost:5000/api/login', credentials)
+        axios.post('http://localhost:9000/api/login', credentials)
             .then((resp) => {
                 console.log(resp);
                 const { token, role, username } = resp.data;
@@ -33,10 +33,10 @@ const Login = () => {
                 history.push('/view');
             })
             .catch((err) => {
-                console.log(err);
+                console.log({err});
                 setCredentials({
                     ...credentials,
-                    error: 'Incorrect username/password.'
+                    error: err.error
                 })
             })
     }
