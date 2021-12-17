@@ -33,10 +33,9 @@ const Login = () => {
                 history.push('/view');
             })
             .catch((err) => {
-                console.log({err});
                 setCredentials({
                     ...credentials,
-                    error: err.error
+                    error: err.message
                 })
             })
     }
